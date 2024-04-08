@@ -1,7 +1,9 @@
 package com;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class Register {
@@ -12,8 +14,10 @@ public class Register {
 	}
 	
 	@RequestMapping("/register")
-	public String starts() {
-		return "temp.html";
+	public ModelAndView register(@ModelAttribute RegisterBean rb, ModelAndView m) {
+		m.addObject("rb",rb);
+		m.setViewName("register.html");
+		return m;
 	}
 	
 }
